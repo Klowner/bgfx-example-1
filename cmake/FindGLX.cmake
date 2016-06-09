@@ -3,7 +3,7 @@ find_path(GLX_INCLUDE_DIR GL/glx.h
 )
 
 find_library(GLX_LIBRARIES
-	NAMES GLX
+	NAMES GLX libGLX libGLX.so
 	PATHS /usr/lib /usr/local/lib
 )
 

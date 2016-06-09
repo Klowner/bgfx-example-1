@@ -52,8 +52,8 @@ include_directories(${BULLET3_SRC_DIR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(OpenGL REQUIRED)
-find_package(GLX REQUIRED)
+#find_package(OpenGL REQUIRED)
+#find_package(GLX REQUIRED)
 find_package(X11 REQUIRED)
 #find_package(SDL2 REQUIRED)
 #find_package(GLFW REQUIRED)
@@ -70,10 +70,6 @@ add_library(bgfx-common STATIC
 	${BGFX_EXAMPLE_COMMON_SOURCES}
 	)
 
-#add_library(bullet3 STATIC
-	#${BULLET3_SOURCES}
-	#)
-
 set(MAIN_BINARY ${PROJECT_NAME})
 
 add_executable(${MAIN_BINARY} ${main_src})
@@ -86,16 +82,14 @@ set_target_properties(${MAIN_BINARY}
 
 include_directories(
 	#${OpenGL_INCLUDE_DIR}
-	${GLX_INCLUDE_DIR}
+	#${GLX_INCLUDE_DIR}
 	${X11_INCLUDE_DIR}
 	#${SDL2_INCLUDE_DIR}
 	)
 
 target_link_libraries(${MAIN_BINARY} LINK_PUBLIC
 	#${OpenGL_LIBRARIES}
-	${GLX_LIBRARIES}
 	${X11_LIBRARIES}
-	#${SDL2_LIBRARY}
+	GLX
 	bgfx bgfx-common
-	#bullet3
 	dl pthread)
